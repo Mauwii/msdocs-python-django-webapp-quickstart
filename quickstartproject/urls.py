@@ -18,5 +18,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('hello_azure.urls')),
+    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
+
