@@ -111,9 +111,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-APPINSIGHTS_INSTRUMENTATIONKEY = (
-    os.environ['APPINSIGHTS_INSTRUMENTATIONKEY'] if 'APPINSIGHTS_INSTRUMENTATIONKEY' in os.environ else '00000000-0000-0000-0000-000000000000'
-)
+# APPINSIGHTS_INSTRUMENTATIONKEY = (
+#     os.environ['APPINSIGHTS_INSTRUMENTATIONKEY'] if 'APPINSIGHTS_INSTRUMENTATIONKEY' in os.environ else '00000000-0000-0000-0000-000000000000'
+# )
+
+APPLICATIONINSIGHTS_CONNECTION_STRING = os.environ['APPLICATIONINSIGHTS_CONNECTION_STRING']
 
 LOGGING = {
     "version": 1,
@@ -122,7 +124,7 @@ LOGGING = {
         "azure": {
             "level": "DEBUG",
             "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
-            "instrumentation_key": APPINSIGHTS_INSTRUMENTATIONKEY,
+            "connection_string": APPLICATIONINSIGHTS_CONNECTION_STRING,
         },
         "console": {
             "level": "DEBUG",
